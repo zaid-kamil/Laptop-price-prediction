@@ -53,7 +53,7 @@ def get_laptop_details(link):
     result['link'] = link
     return result
 
-def main():
+def main(limit=10):
     page = 1    
     while True:
         print(f'Extracting links from page {page}')
@@ -61,12 +61,12 @@ def main():
         laptops = []
         if len(links) > 0:
             print(f'Found {len(links)} links')
-            for link in links[:3]:
+            for link in links:
                 print(f'Extracting details from {link}')
                 details = get_laptop_details(link)
                 laptops.append(details)
             page += 1
-            if page > 2 :
+            if page > limit :
                 break
         else:
             break
